@@ -1,0 +1,41 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Short Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .Blogs }}
+        <tr>
+            <td>
+                {{.Title}}
+            </td>
+            <td class="py-1">
+                <img src="{{$.BaseURL}}/{{.Image}}" alt=" {{.Title}}" />
+            </td>
+            <td>
+                {{.ShortDesc}}
+            </td>
+            <td>
+                <div class="d-flex justify-content-start gap-2">
+                    <a href="/admin/blog/edit/{{.ID}}">
+                        <button type="button" class="btn btn-primary btn-rounded btn-icon">
+                            <i class="ti-pencil"></i>
+                        </button>
+                    </a>
+                    <button type="submit" hx-get="/admin/blog/delete/{{.ID}}" hx-confirm="Are You Sure to Delete Blog"
+                        hx-target="#search-results" 
+                        hx-on="htmx:afterRequest: displayMessage('Blog deleted successfully', 2000)"
+                         class="btn btn-primary btn-rounded btn-icon">
+                        <i class="ti-trash"></i>
+                    </button>
+                </div>
+
+            </td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>

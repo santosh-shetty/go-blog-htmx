@@ -1,0 +1,81 @@
+{{define "content"}}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 22px !important;">{{if .Blog.ID}} Edit Blog {{else}}Add
+                            Blog{{end}}</h4>
+                            <form {{if .Blog.ID}} id="updateBlog"  {{else}}  id="addBlog" {{end}}class="forms-sample" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <!-- Hidden category Id for edit -->
+                                    {{if .Blog.ID}}
+                                    <input type="hidden" name="blogId" id="blogId" value="{{.Blog.ID}}">
+                                    {{end}}
+
+                                    <div class="col-md-6 col-6">
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <input type="text" class="form-control" name="title" id="title"
+                                                placeholder="Enter Title" value="{{.Blog.Title}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-6">
+                                        <div class="form-group">
+                                            <label for="image">Image</label>
+                                            <input type="file" class="form-control" name="image" id="image" {{if not
+                                                .Blog.Image}}required{{end}}>
+                                            {{if .Blog.Image}}
+                                            <img src="/{{ .Blog.Image}}" alt="blog image" class="mt-2"
+                                                style="width: 100px;">
+                                            {{end}}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-6">
+                                        <div class="form-group">
+                                            <label for="short_desc">Short Description</label>
+                                            <textarea rows="3" class="form-control" name="short_desc" id="short_desc"
+                                                placeholder="Enter Short Description">{{.Blog.ShortDesc}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-6">
+                                        <div class="form-group">
+                                            <label for="category">Category</label>
+                                            <select class="form-control" name="category" id="category">
+                                                {{range .Categories}}
+                                                <option value="{{.ID}}" {{if eq $.Blog.Category .ID}}  selected {{end}}>{{.Title}}</option>
+                                                {{end}}
+                                            </select>
+                                            <!-- <input type="number" class="form-control" 
+                                                placeholder="Enter Category" value="{{.Blog.Category}}"> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group">
+                                            <label for="short_desc">Description</label>
+                                            <textarea id="description"
+                                                name="description">{{.Blog.Description}}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-12" style="text-align: end;">
+                                        <button type="submit" class="btn btn-primary mr-2" id="submtBtn" name="submit">
+                                            {{if .Blog.ID}}Update{{else}}Submit{{end}}</button>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    tinymce.init({
+        selector: 'textarea#description',
+    });
+</script>
+{{end}}

@@ -1,0 +1,44 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .Categories }}
+        <tr>
+            <td>
+                {{.Title}}
+            </td>
+            <td>
+                {{.Description}}
+            </td>
+            <td>
+                <div class="d-flex justify-content-start gap-2">
+                    <a href="/admin/category/edit/{{.ID}}">
+                        <button type="button"
+                            class="btn btn-primary btn-rounded btn-icon">
+                            <i class="ti-pencil"></i>
+                        </button>
+                    </a>
+                    <button type="button" hx-get="/admin/category/delete/{{.ID}}"
+                        hx-confirm="Are You Sure to Delete Category" 
+                        hx-target="#category-results"
+                        hx-on="htmx:afterRequest: displayMessage('Category deleted successfully', 2000)"
+                        class="btn btn-primary btn-rounded btn-icon">
+                        <i class="ti-trash"></i>
+                    </button>
+                    <!-- <form id="deleteCategory" method="POST"  action="/admin/category/delete">
+                    <input type="hidden" name="id" value="{{.ID}}">
+                    <button type="submit" name="submit" id="submtBtn" class="btn btn-primary btn-rounded btn-icon">
+                        <i class="ti-trash"></i>
+                    </button>
+                </form> -->
+                </div>
+            </td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
