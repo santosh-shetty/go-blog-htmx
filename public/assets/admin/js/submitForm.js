@@ -107,12 +107,12 @@ $("#addCategory").submit(function (e) {
                     window.location.href = `${baseUrl}/admin/category/list`;
                 }, 2000);
             } else {
-                   $("#submtBtn").prop("disabled", false)
+                $("#submtBtn").prop("disabled", false)
                 console.log('An error occurred:', data.message);
             }
         },
         error: function (data) {
-               $("#submtBtn").prop("disabled", false)
+            $("#submtBtn").prop("disabled", false)
             console.log('An error occurred.');
             console.log(data);
         },
@@ -139,12 +139,12 @@ $("#updateCategory").submit(function (e) {
                     window.location.href = `${baseUrl}/admin/category/list`;
                 }, 2000);
             } else {
-                   $("#submtBtn").prop("disabled", false)
+                $("#submtBtn").prop("disabled", false)
                 console.log('An error occurred:', data.message);
             }
         },
         error: function (data) {
-               $("#submtBtn").prop("disabled", false)
+            $("#submtBtn").prop("disabled", false)
             console.log('An error occurred.');
             console.log(data);
         },

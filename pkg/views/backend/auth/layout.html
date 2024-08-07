@@ -1,0 +1,88 @@
+{{define "layout"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{.Title}}</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/public/assets/admin/vendors/feather/feather.css">
+    <link rel="stylesheet" href="/public/assets/admin/vendors/ti-icons//public/assets/admin/css/themify-icons.css">
+    <link rel="stylesheet" href="/public/assets/admin/vendors/public/assets/admin/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="/public/assets/admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="/public/assets/admin/vendors/ti-icons//public/assets/admin/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/admin/js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/public/assets/admin/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/public/assets/admin/images/favicon.png" />
+    <!-- Themify Icons -->
+    <link href="
+  https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.min.css
+  " rel="stylesheet">
+    <!-- HTMX  -->
+    <script src="/public/assets/admin/js/htmx.min.js"></script>
+
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                            <div class="brand-logo">
+                                <img src="/public/assets/admin/images/logo.svg" alt="logo">
+                            </div>
+                            {{ if .Message}}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>{{.Message}}</strong>
+                            </div>
+                            {{end}}
+                            {{template "content" .}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+
+
+    <!-- plugins:js -->
+    <script src="/public/assets/admin/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="/public/assets/admin/vendors/chart.js/Chart.min.js"></script>
+    <script src="/public/assets/admin/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="/public/assets/admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="/public/assets/admin/js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="/public/assets/admin/js/off-canvas.js"></script>
+    <script src="/public/assets/admin/js/hoverable-collapse.js"></script>
+    <script src="/public/assets/admin/js/template.js"></script>
+    <script src="/public/assets/admin/js/settings.js"></script>
+    <script src="/public/assets/admin/js/todolist.js"></script>
+    <!-- endinject -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Notify js -->
+    <script src="/public/assets/admin/js/notify.js"></script>
+    <!-- Custom js for this page-->
+    <script src="/public/assets/admin/js/dashboard.js"></script>
+    <script src="/public/assets/admin/js/Chart.roundedBarCharts.js"></script>
+    <script src="/public/assets/admin/js/submitForm.js"></script>
+    <!-- End custom js for this page-->
+
+</body>
+
+</html>
+
+{{end}}
